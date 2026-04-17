@@ -1,0 +1,162 @@
+.container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background */
+.background {
+  position: absolute;
+  inset: 0;
+  background: #1C6EA4;
+  z-index: 0;
+}
+
+/* Layout */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+}
+
+/* LEFT */
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 60px;
+}
+
+.leftInner {
+  max-width: 400px;
+}
+
+.left h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.left p {
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+}
+
+.stats h3 {
+  font-size: 20px;
+}
+
+.stats span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* RIGHT */
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARD */
+.card {
+  width: 320px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #1e293b;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 25px;
+}
+
+/* INPUT */
+.inputBox {
+  display: flex;
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.inputBox input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  margin-left: 10px;
+  width: 20%;
+}
+
+/* ICON */
+.icon {
+  font-size: 14px;
+}
+
+/* EYE BUTTON */
+.eyeBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyeBtn svg {
+  width: 18px;
+  height: 18px;
+  color: #94a3b8;
+  transition: 0.2s;
+}
+
+.eyeBtn:hover svg {
+  color: white;
+}
+
+/* BUTTON */
+.button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.button:hover {
+  background: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .left {
+    text-align: center;
+    padding: 30px;
+  }
+}

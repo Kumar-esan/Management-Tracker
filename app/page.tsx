@@ -1,65 +1,136 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import styles from "./login.module.css";
+
+/* Icons */
+const UserIcon = () => <span className={styles.icon}>👤</span>;
+const LockIcon = () => <span className={styles.icon}>🔒</span>;
+
+export default function LoginPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className={styles.container}>
+      
+      {/* Background */}
+      <div className={styles.background}>
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 380"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M560 0 C560 0 630 110 605 200 C580 295 680 380 680 380 L1200 380 L1200 0Z"
+            fill="#2980B9"
+            opacity="0.55"
+          />
+          <path
+            d="M520 0 C520 0 595 115 568 210 C542 305 650 380 650 380 L1200 380 L1200 0Z"
+            fill="#3498DB"
+            opacity="0.28"
+          />
+        </svg>
+      </div>
+
+      {/* CONTENT */}
+      <div className={styles.content}>
+        
+        {/* LEFT */}
+        <div className={styles.left}>
+          <div className={styles.leftInner}>
+            <h1>Welcome Back 👋</h1>
+            <p>Track, manage, and control everything from one place.</p>
+
+            <div className={styles.stats}>
+              <div>
+                <h3>12K+</h3>
+                <span>Tasks</span>
+              </div>
+              <div>
+                <h3>98%</h3>
+                <span>Uptime</span>
+              </div>
+              <div>
+                <h3>340</h3>
+                <span>Users</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* RIGHT */}
+        <div className={styles.right}>
+          <div className={styles.card}>
+            <h2>Sign In</h2>
+            <p className={styles.sub}>Enter your credentials</p>
+
+            {/* Username */}
+            <div className={styles.inputBox}>
+              <UserIcon />
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+
+            {/* Password */}
+            <div className={styles.inputBox}>
+              <LockIcon />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  /* Eye OFF */
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 3L21 21" stroke="currentColor" strokeWidth="2"/>
+                    <path
+                      d="M10.5 10.5A3 3 0 0013.5 13.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M2 12C4.5 7 8 5 12 5c1.5 0 3 .3 4.3.9M22 12c-2.5 5-6 7-10 7-1.5 0-3-.3-4.3-.9"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                ) : (
+                  /* Eye ON */
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M2 12C4.5 7 8 5 12 5s7.5 2 10 7c-2.5 5-6 7-10 7s-7.5-2-10-7z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <button className={styles.button}>
+              Sign In →
+            </button>
+          </div>
         </div>
-      </main>
+
+      </div>
     </div>
   );
 }
